@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Parth Mahajan
+
 """Local HTTP API used by the macOS app (127.0.0.1 only)."""
 
 from __future__ import annotations

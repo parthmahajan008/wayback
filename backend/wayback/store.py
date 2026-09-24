@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Parth Mahajan
+
 """SQLite storage: sessions, chunks, an FTS5 index and hash-keyed embeddings.
 
 Embeddings are keyed by the SHA1 of the chunk text, not by chunk id, so a

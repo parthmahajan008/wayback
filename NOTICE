@@ -1,0 +1,8 @@
+Wayback
+Copyright 2026 Parth Mahajan
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The macOS app bundle includes a copy of uv (https://github.com/astral-sh/uv),
+Copyright (c) Astral Software Inc., used under the MIT or Apache-2.0 license.
+See THIRD_PARTY_NOTICES.md and third_party/uv/.

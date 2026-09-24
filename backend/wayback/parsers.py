@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Parth Mahajan
+
 """Parse Claude Code and Codex session transcripts into a common shape.
 
 Both tools write JSONL transcripts; this module turns one file into a

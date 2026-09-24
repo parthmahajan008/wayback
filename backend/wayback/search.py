@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Parth Mahajan
+
 """Hybrid retrieval: dense vectors (GPU matmul) + BM25 (FTS5), fused with RRF."""
 
 from __future__ import annotations

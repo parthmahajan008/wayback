@@ -69,4 +69,7 @@ brew install uv
 
 ## License
 
-MIT
+Wayback is licensed under the [Apache License 2.0](LICENSE). See [NOTICE](NOTICE) and
+[THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for bundled and downloaded components.
+
+Not affiliated with Anthropic or OpenAI.

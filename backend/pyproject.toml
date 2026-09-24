@@ -1,8 +1,8 @@
 [project]
 name = "wayback-backend"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
+description = "Local search and RAG backend for Wayback"
+license = "Apache-2.0"
 requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.141.1",

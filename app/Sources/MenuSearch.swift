@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 Parth Mahajan
+
 import SwiftUI
 
 /// Search-only popover behind the menu bar icon, scoped to Claude Code sessions.

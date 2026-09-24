@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: Apache-2.0
+// Copyright 2026 Parth Mahajan
+
 import Foundation
 
 /// Starts (or attaches to) the local Python backend and talks to its HTTP API.

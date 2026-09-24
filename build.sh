@@ -1,4 +1,5 @@
 #!/bin/zsh
+# SPDX-License-Identifier: Apache-2.0
 # Build "Wayback.app" and install it into ~/Applications.
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -14,6 +15,7 @@ cp "$(command -v uv)" "$APP/Contents/MacOS/uv"
 codesign --force --sign - "$APP/Contents/MacOS/uv"
 
 cp app/Info.plist "$APP/Contents/Info.plist"
+cp -R LICENSE NOTICE THIRD_PARTY_NOTICES.md third_party "$APP/Contents/Resources/"
 [[ -f app/AppIcon.icns ]] && cp app/AppIcon.icns "$APP/Contents/Resources/AppIcon.icns"
 rsync -a --exclude '__pycache__' --exclude '.venv' backend/pyproject.toml backend/uv.lock backend/.python-version backend/wayback \
   "$APP/Contents/Resources/backend/"

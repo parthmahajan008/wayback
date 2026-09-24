@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Parth Mahajan
+
 """Local embedding model (sentence-transformers on Apple GPU via MPS)."""
 
 from __future__ import annotations

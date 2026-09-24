@@ -1,3 +1,6 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright 2026 Parth Mahajan
+
 """Incremental indexer: scan transcripts, chunk, store, embed.
 
 Pass 1 parses every new/changed transcript and writes chunks + FTS rows, so
