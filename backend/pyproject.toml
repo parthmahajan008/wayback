@@ -1,0 +1,13 @@
+[project]
+name = "wayback-backend"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.141.1",
+    "numpy>=2.5.3",
+    "sentence-transformers>=6.1.0",
+    "torch>=2.14.0",
+    "uvicorn>=0.53.0",
+]
