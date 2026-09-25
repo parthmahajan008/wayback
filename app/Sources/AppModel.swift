@@ -27,6 +27,7 @@ final class AppModel {
     var searching = false
     var tookMs = 0
     var lastSearched = ""
+    var openTopResult = false
     var errorText: String?
 
     // Ask
@@ -133,6 +134,10 @@ final class AppModel {
                 tookMs = r.tookMs
                 lastSearched = q
                 errorText = nil
+                if openTopResult, let top = results.first {
+                    openTopResult = false
+                    open(top)
+                }
             } catch {
                 if !Task.isCancelled { errorText = error.localizedDescription }
             }

@@ -19,9 +19,12 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 HOME = Path.home()
-CLAUDE_ROOT = HOME / ".claude" / "projects"
-CODEX_ROOTS = [HOME / ".codex" / "sessions", HOME / ".codex" / "archived_sessions"]
-CODEX_INDEX = HOME / ".codex" / "session_index.jsonl"
+# Overridable for non-standard installs (and for the README's demo dataset).
+CLAUDE_DIR = Path(os.environ.get("WAYBACK_CLAUDE_DIR", HOME / ".claude"))
+CODEX_DIR = Path(os.environ.get("WAYBACK_CODEX_DIR", HOME / ".codex"))
+CLAUDE_ROOT = CLAUDE_DIR / "projects"
+CODEX_ROOTS = [CODEX_DIR / "sessions", CODEX_DIR / "archived_sessions"]
+CODEX_INDEX = CODEX_DIR / "session_index.jsonl"
 
 # Hard cap per message so giant pasted logs / generated prompts don't dominate.
 MAX_MSG_CHARS = 8000

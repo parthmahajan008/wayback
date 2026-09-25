@@ -32,12 +32,15 @@ struct ContentView: View {
             TranscriptView()
         }
         .onAppear { WindowOpener.shared.open = { openWindow(id: "main") } }
-        // wayback://search?q=...   wayback://ask?q=...
+        // wayback://search?q=...[&open=1]   wayback://ask?q=...
         .onReceive(NotificationCenter.default.publisher(for: .openQueryURL)) { note in
-            guard let url = note.object as? URL, let q = URLComponents(url: url, resolvingAgainstBaseURL: false)?
-                .queryItems?.first(where: { $0.name == "q" })?.value else { return }
+            guard let url = note.object as? URL,
+                  let items = URLComponents(url: url, resolvingAgainstBaseURL: false)?.queryItems,
+                  let q = items.first(where: { $0.name == "q" })?.value else { return }
             model.mode = url.host() == "ask" ? .ask : .search
             model.query = q
+            // wayback://search?q=...&open=1 jumps straight to the best match.
+            model.openTopResult = items.contains { $0.name == "open" && $0.value == "1" }
             model.submit()
         }
     }
@@ -580,7 +583,7 @@ struct FailedView: View {
 
 // MARK: - Text helpers
 
-private let stopWords: Set<String> = ["a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "how", "i", "in", "is", "it", "of", "on", "or", "that", "the", "this", "to", "was", "we", "what", "when", "where", "which", "who", "why", "with", "you", "your", "did", "do", "does", "not", "no", "can", "could", "should", "would", "have", "has", "had", "but", "if", "then", "so", "there", "their", "they"]
+private let stopWords: Set<String> = ["a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "how", "i", "in", "is", "it", "of", "on", "or", "that", "the", "this", "to", "was", "we", "what", "when", "where", "which", "who", "why", "with", "you", "your", "did", "do", "does", "our", "us", "my", "me", "its", "not", "no", "can", "could", "should", "would", "have", "has", "had", "but", "if", "then", "so", "there", "their", "they"]
 
 func queryTerms(_ q: String) -> [String] {
     q.lowercased()

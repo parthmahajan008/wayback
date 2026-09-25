@@ -17,7 +17,7 @@ from .embedder import embedder
 
 RRF_K = 60
 _WORD = re.compile(r"[\w][\w.\-/]*", re.U)
-_STOP = set("not no can could should would have has had but if then so there their they a an and are as at be by for from how i in is it of on or that the this to was we what when where which who why with you your did do does".split())
+_STOP = set("our us my me mine its not no can could should would have has had but if then so there their they a an and are as at be by for from how i in is it of on or that the this to was we what when where which who why with you your did do does".split())
 
 
 def _epoch(ts: str | None) -> float:

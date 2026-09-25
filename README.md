@@ -4,6 +4,8 @@ Search every Claude Code and Codex session on your Mac. Wayback indexes your age
 locally with on-device embeddings, so you can find that command, decision or fix from three weeks ago.
 You can also ask questions and get answers with citations back to the exact sessions.
 
+![Wayback search: a plain-English query finds the matching session and jumps to the exact message](docs/screenshots/search.png)
+
 - **Search**: hybrid semantic + keyword search across `~/.claude/projects` and `~/.codex/sessions`.
   Typical latency is about 200 ms.
 - **Ask**: RAG over your sessions. Retrieval runs locally; answers come from your own `claude` or
@@ -11,6 +13,19 @@ You can also ask questions and get answers with citations back to the exact sess
 - **Menu bar**: click the 🔍 icon for a quick Claude Code search. Press **⌥⇧Space** from anywhere
   to open the full app.
 - **Transcripts**: open any session at the matching message, or resume it in Terminal.
+
+<table>
+  <tr>
+    <td width="68%"><img src="docs/screenshots/ask.png" alt="Ask mode: an answer with citations to the source sessions"></td>
+    <td width="32%"><img src="docs/screenshots/menubar.png" alt="Menu bar quick search across Claude Code sessions"></td>
+  </tr>
+  <tr>
+    <td align="center"><b>Ask</b>: answers cite the sessions they came from</td>
+    <td align="center"><b>Menu bar</b>: quick search across Claude Code sessions</td>
+  </tr>
+</table>
+
+<sub>Screenshots use a fictional demo dataset (<code>scripts/demo_data.py</code>), not real sessions.</sub>
 
 ## Install
 
@@ -53,7 +68,8 @@ Ask mode uses whichever of these you have: the `claude` CLI (logged in), the `co
   reciprocal-rank fusion and deduplicated.
 - **Updates**: the index refreshes incrementally every 2 minutes.
 - Automated `codex exec` runs are indexed but hidden by default. Toggle them in the sidebar.
-- URL scheme: `wayback://search?q=…` and `wayback://ask?q=…`, handy for Raycast or Alfred.
+- URL scheme: `wayback://search?q=…` (add `&open=1` to jump to the best match) and `wayback://ask?q=…`,
+  handy for Raycast or Alfred.
 
 ## Build from source
 
@@ -62,7 +78,8 @@ brew install uv
 ./build.sh    # compiles the Swift app, bundles uv + the Python backend, installs to ~/Applications
 ```
 
-- Environment overrides: `WAYBACK_MODEL`, `WAYBACK_PORT` (default 8765), `WAYBACK_INTERVAL` (seconds).
+- Environment overrides: `WAYBACK_CLAUDE_DIR` (default `~/.claude`), `WAYBACK_CODEX_DIR` (default `~/.codex`),
+  `WAYBACK_MODEL`, `WAYBACK_PORT` (default 8765), `WAYBACK_INTERVAL` (seconds).
 - Backend log: `~/Library/Application Support/Wayback/backend.log`.
 - Dev server: `cd backend && PYTHONPATH=. uv run python -m wayback.server`. The app reuses a backend
   that's already running.
